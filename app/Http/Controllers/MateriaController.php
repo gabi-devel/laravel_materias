@@ -13,8 +13,10 @@ class MateriaController extends Controller
 {
     public function index()
     {
+        $usuario = Auth::user();
         $dias = Calendar::all();
-        $todas_las_materias = Materia::orderBy('id_materia', 'DESC')->paginate(6);
+        /* $todas_las_materias = Materia::orderBy('id_materia', 'DESC')->paginate(6); */
+        $todas_las_materias = Materia::where('id_user', $usuario->id)->get();
         return view('materias.inicio', ['variable' => $todas_las_materias, 'dias' => $dias]);
     }
 

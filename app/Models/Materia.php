@@ -33,4 +33,8 @@ class Materia extends Model
     /* public function usuario() {
         return $this->belongsTo(User::class, 'id_user', 'id_materia');
     } */
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
